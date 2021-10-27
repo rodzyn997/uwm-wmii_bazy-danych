@@ -1,0 +1,28 @@
+ZAD 1
+=============================
+postac
+=============================
+ CREATE TABLE postac(Id_postaci INT AUTO_INCREMENT PRIMARY KEY, nazwa VARCHAR(40) NOT NULL,data_ur DATE NOT NULL,rodzaj enum('wiking','drozd','kobieta'), wiek INT unsigned);
+->> INSERT INTO postac VALUES(1,'kox','1950-01-01','wiking',72);
+->> INSERT INTO postac VALUES(2,'Jadzia','1934-01-01','kobieta',70);
+->> INSERT INTO postac VALUES(2,'Jadzia','2017-01-01','drozd',4);
+->> ALTER TABLE postac WHERE wiek=88 nazwa='Jadzia';
+=============================
+ZAD 2
+=============================
+walizka
+=============================
+CREATE TABLE walizka(id_walizki int AUTO_INCREMENT PRIMARY KEY,pojemnosc int unsigned,kolor enum('rozowy','czerwony','teczowy','zolty') ,id_wlasciciela int,foreign key(id_wlasciciela)references postac(id_postaci)on delete cascade );
+=============================
+->> alter into walizka alter kolor set default 'rozowy';
+->>  insert into walizka values(1,4,default,1);
+->>  insert into walizka values(2,4,default,2);
+=============================
+ZAD 3
+=============================
+izba
+=============================
+create table izba( adres_budynku varchar(45), nazwa_izby varchar(45), primary key(adres_budynku,nazwa_izby), metraz int unsigned,wlasciciel int, foreign key(wlasciciel) references postac(id_postaci)on delete set null);
+->>alter table izba add column kolor enum('czarny') default 'czarny' after metraz;
+
+
