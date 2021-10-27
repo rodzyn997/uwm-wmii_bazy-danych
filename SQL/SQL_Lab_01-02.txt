@@ -1,0 +1,61 @@
+=============================
+ZAD 1
+=============================
+postac
+=============================
+ CREATE TABLE postac(Id_postaci INT AUTO_INCREMENT PRIMARY KEY, nazwa VARCHAR(40) NOT NULL,data_ur DATE NOT NULL,rodzaj enum('wiking','drozd','kobieta'), wiek INT unsigned);
+>> INSERT INTO postac VALUES(1,'kox','1950-01-01','wiking',72);
+>> INSERT INTO postac VALUES(2,'Jadzia','1934-01-01','kobieta',70);
+>> INSERT INTO postac VALUES(2,’stanislaw,’2017-01-01','drozd',4);
+>> ALTER TABLE postac WHERE wiek=88 nazwa='Jadzia';
+=============================
+ZAD 2
+=============================
+walizka
+=============================
+CREATE TABLE walizka(id_walizki int AUTO_INCREMENT PRIMARY KEY,pojemnosc int unsigned,kolor enum('rozowy','czerwony','teczowy','zolty') ,id_wlasciciela int,foreign key(id_wlasciciela)references postac(id_postaci)on delete cascade );
+>> alter into walizka alter kolor set default 'rozowy';
+>>  insert into walizka values(1,4,default,1);
+>>  insert into walizka values(2,4,default,2);
+=============================
+ZAD 3
+=============================
+izba
+=============================
+create table izba( adres_budynku varchar(45), nazwa_izby varchar(45), primary key(adres_budynku,nazwa_izby), metraz int unsigned,wlasciciel int, foreign key(wlasciciel) references postac(id_postaci)on delete set null);
+>> alter table add kolor varchar(20) after metraz;
+>> alter table izba add column kolor enum('czarny') default 'czarny' after metraz;
+>> insert into izba values('szkolna 17','spizarnia koxa',80,default,1);
+=============================
+ZAD 4
+=============================
+przetwory
+=============================
+>> create table pzetwory(
+id_przetworu int primary key,
+rok_produkcji int default 1654,
+id_wykonawcy int,
+foreign key(id_wykonawcy) references postac(id_postaci),zawartosc varchar(200),dodatek varchar(200) default 'papryczka chilli',
+id_konsumenta int, foreign key(id_konsumenta) references postac(id_postaci));
+>> insert into przetwory values(1,default,1,'bigos',default,2);
+=============================
+ZAD 5
+=============================
+>> insert into postac values(0,'ksiek','1980-01-01','wiking',31);
+>> insert into postac values(0,'jOOr','1960-01-01','wiking',51);
+>> insert into postac values(0,'JanRboRODO','1940-04-02','wiking',81);
+>> insert into postac values(0,'rafalek','2000-04-02','wiking',21);
+>> insert into postac values(0,'mlody','2006-04-02','wiking',15);
+
+>> create table statek( 
+nazwa_statku varchar(100) primary key,
+rodzaj_statku enum('piracki','lajdacki'),
+data_wodowania data, 
+max_ladownosc int not null);
+
+
+
+
+
+
+
