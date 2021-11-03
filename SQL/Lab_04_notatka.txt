@@ -1,0 +1,79 @@
+====================
+lab_04 notatka
+====================
+>> DELETE FROM postac WHERE rodzaj='wiking' or rodzaj='ptak';
+>
+<
+<=
+>=
+!= 
+==
+>> WHERE rodzaj is not NULL;
+====================
+usuwanie klucza
+====================
+>> ALTER TABLE postac DROP FOREIGN KEY .._ibfk_...;
+>> ALTER TABLE postac DROP Primary key;
+====================
+zad 3 
+====================
+a)
+
+SELECT nazwa FROM postac
+WHERE nazwa LIKE '%a%';
+WHERE nazwa LIKE 'A%';
+
+b)
+
+>> UPDATE statek SET ladownosc= 0.7 * ladownowsc
+WHERE data_wodowania >='1901-01-01' and data_wodowania <= '2000-12-31';
+
+>> UPDATE statek SET ladownosc= 0.7 * ladownowsc
+WHERE data_wodowania BETWEEN '1901-01-01' and '2000-12-31';
+
+c)
+
+>> ALTER TABLE postac MODIFY wiek int unsigned CHECK(wiek<1000);
+
+====================
+zad 4
+====================
+a)
+
+>> ALTER TABLE postac MODIFY rodzaj...;
+
+b)
+====================
+przeniesie strukture (kopia)
+====================
+
+>> CREATE TABLE marynarz LIKE postac;
+
+>> CREATE TABLE marynarz SELECT * FROM postac;
+
+====================
+zad 5
+====================
+a)
+>> UPDATE...
+wstawienie null w kolumnie statek tabeli postac (o ile to mozliwe-jezeli nie zmieniamy atrybut kolumny)
+
+b)
+
+>> DELETE FROM postac WHERE..;
+
+c)
+
+>> DELETE FROM statek ;
+
+d)
+
+>> DROP ...
+
+e)
+
+>> CREATE TABLE zwierz ...
+
+f)
+
+>> INSERT INTO zwierz SELECT id_postaci, nazwa ,wiek FROM postac;
