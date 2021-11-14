@@ -1,0 +1,33 @@
+===================
+Zad 1
+===================
+>> create table kreatura like wikingowie.kreatura;
+>> insert into kreatura select * from wikingowie.kreatura;
+>> to samo z zasob i ekwipunek
+>> select * from zasob;
+>> select * from zasob where rodzaj='jedzenie';
+
+===================
+Zad 2
+===================
+>> select * from kreatura where rodzaj!="wiedzma" and udzwig>50;
+>> select * from zasob where waga between 2 and 5;
+>> select * from kreatura where nazwa like '%or%' and udzwig between 30 and 70;
+
+===================
+Zad 3
+===================
+>> select datapozyskania from zasob where month(datapozyskania)>=7 and month(datapozyskania)<=8;
+
+===================
+Zad 4
+===================
+>> select nazwa,rodzaj from kreatura where rodzaj like "wi%";
+>> select nazwa, ilosc*waga from zasob where dataPozyskania between '2000-01-01' and'2007-12-31';
+
+===================
+Zad 5
+===================
+>> select waga*0.7 as jedzenie, waga*0.3 as odpady from zasob where rodzaj='jedzenie';
+>> select * from zasob where rodzaj is null;
+>> select distinct nazwa from zasob where nazwa like "Ba%" or nazwa like "%os";
