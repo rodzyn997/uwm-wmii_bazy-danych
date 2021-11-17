@@ -1,0 +1,38 @@
+======================
+	Zad 1
+======================
+>> select rodzaj, avg(udzwig) from kreatura  group by rodzaj;
+
+#avg()- srednia 
+#count () zlicza ilosc elementow
+#sum() - suma 
+======================
+	Zad 2 
+======================
+>> select rodzaj, sum(waga) from zasob group by rodzaj;
+
+>> select nazwa, avg(waga) from zasob where ilosc>=4  group by nazwa having avg(waga)>10;
+
+>> select count(nazwa), rodzaj from zasob where ilosc>=1 group by rodzaj;
+======================
+	Zad 3 
+======================
+>> select * from kreatura , ekwipunek where wikingowie.idKreatury=ekwipunek.idKreatury;
+
+
+>> select* from kreatura k  inner join ekwipunek e on k.idKreatury=ek.idKreatury;
+
+>> select k.nazwa, sum(e.ilosc) from kreatura k  inner join ekwipunek e
+
+on w.idKreatury=e.idKreatury group by(nazwa);
+
+>> select k.nazwa,k.idKreatury, e.idKreatury as ekwipunek from kreatura k left join ekwipunek e 
+on k.idKreatury=e.idKreatury;
+
+>> select k.nazwa,k.idKreatury, e.idKreatury as ekwipunek from kreatura k left join ekwipunek e 
+on k.idKreatury=e.idKreatury where e.idkreatury is null ;
+======================
+	Zad 4
+======================
+
+>>
