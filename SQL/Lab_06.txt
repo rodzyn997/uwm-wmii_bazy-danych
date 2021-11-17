@@ -17,14 +17,14 @@
 ======================
 	Zad 3 
 ======================
->> select * from kreatura , ekwipunek where wikingowie.idKreatury=ekwipunek.idKreatury;
+>> select * from kreatura , ekwipunek where kreatura.idKreatury=ekwipunek.idKreatury;
 
 
 >> select* from kreatura k  inner join ekwipunek e on k.idKreatury=ek.idKreatury;
 
 >> select k.nazwa, sum(e.ilosc) from kreatura k  inner join ekwipunek e
 
-on w.idKreatury=e.idKreatury group by(nazwa);
+on k.idKreatury=e.idKreatury group by(nazwa);
 
 >> select k.nazwa,k.idKreatury, e.idKreatury as ekwipunek from kreatura k left join ekwipunek e 
 on k.idKreatury=e.idKreatury;
