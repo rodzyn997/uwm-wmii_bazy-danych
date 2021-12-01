@@ -71,4 +71,5 @@ on u.id_uczestnika=k.idkreatury group by k.nazwa;
 
 select w.nazwa, sum(length(ew.dziennik)) as 'liczba znaków'
 from wyprawa w inner join etapy_wyprawy ew
-on  ew.idwyprawy=w.id_wyprawy group by w.nazwa;
+on  ew.idwyprawy=w.id_wyprawy group by w.nazwa
+having sum(length(ew.dziennik))<400;
