@@ -73,3 +73,17 @@ select w.nazwa, sum(length(ew.dziennik)) as 'liczba znaków'
 from wyprawa w inner join etapy_wyprawy ew
 on  ew.idwyprawy=w.id_wyprawy group by w.nazwa
 having sum(length(ew.dziennik))<400;
+
+#=====================
+# zad 4.2
+#=====================
+
+select u.id_wyprawy,sum(e.ilosc*z.waga)/count(distinct u.id_uczestnika) as srednia_waga
+from uczestnicy u left join ekwipunek e on u.id_uczestnika=e.idkreatury 
+left join zasob z on z.idzasobu=e.idzasobu group by u.id_wyprawy;
+ 
+#=====================
+# zad 5.1
+#=====================
+
+
